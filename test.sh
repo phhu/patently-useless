@@ -1,0 +1,15 @@
+curl 'https://api.inferkit.com/v1/models/standard/generate?useDemoCredits=true' \
+  -H 'authority: api.inferkit.com' \
+  -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36' \
+  -H 'x-csrf-token: undefined' \
+  -H 'content-type: application/json;charset=UTF-8' \
+  -H 'accept: */*' \
+  -H 'origin: https://app.inferkit.com' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'referer: https://app.inferkit.com/demo' \
+  -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+  -H 'cookie: intercom-id-xuamg62m=f6aab50a-4240-48a1-9d16-56e596c84888; intercom-session-xuamg62m=' \
+  --data-raw '{"streamResponse":false,"prompt":{"text":"I want some tea","isContinuation":false},"startFromBeginning":false,"length":500,"forceNoEnd":false,"topP":0.9,"temperature":1}' \
+  --compressed
