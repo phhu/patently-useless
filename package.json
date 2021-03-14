@@ -7,8 +7,10 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-native-screen-keyboard": "^1.2.0",
+    "react-simple-keyboard": "^2.5.180",
     "react-touch-screen-keyboard": "^1.0.0",
-    "rita": "^2.4.85"
+    "rita": "^2.4.85",
+    "simple-keyboard": "^2.32.125"
   },
   "devDependencies": {},
   "scripts": {

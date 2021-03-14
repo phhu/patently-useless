@@ -9,11 +9,16 @@ function Keyboard(){
   const [type, setType] = useState('');
   const [kName, setName] = useState('');
   
+  const fill = (n,x)=>Array(n).fill(x);
+  const fillKeyboard = (x) => [
+    fill(10,x),fill(10,x),fill(8,x)
+  ];
   const change = (ev) => {
+    customMapping=fillKeyboard("j")
     setValue(ev)
     console.log("keyboard change",ev)
   }
-  const CustomMapping = [
+  let customMapping = [
     ['q', 'w', 'egg', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
     ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '@'],
     ['z', 'x', 'c', 'v', 'bananarama', 'n', 'm', '.com']
@@ -27,7 +32,7 @@ function Keyboard(){
     name={kName}
     onChange={change}
     inputClassName="keyboardInput"
-    defaultKeyboard={CustomMapping}
+    defaultKeyboard={customMapping}
     
   />
 }

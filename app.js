@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from "react"
 //import { VirtualKeyboard } from 'react-native-screen-keyboard';
 //import KeyboardedInput from 'react-touch-screen-keyboard';
 import Keyboard from "./keyboard" 
+import SimpleKeyboard from "./simpleKeyboard"
 const rita = require('rita')
 // https://rednoise.org/rita/reference/RiTa/rhymes/index.html
 // see https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
@@ -62,12 +63,14 @@ const App = () => {
   
   return (
     <div>
+      {/*
       <textarea cols="80" rows="8"
        onKeyPress={keyPress}
        onChange={ev => setText(ev.target.value)}
        value={text}
       ></textarea>
       <br />
+      */}
       <select value={filter} onChange={ev => setFilter(ev.target.value)}>
         <option>Blank</option>
         <option>Vowels</option>
@@ -76,6 +79,7 @@ const App = () => {
       </select>       
       <button onClick={buttonClicked}>switch</button>
       <Keyboard />
+      <SimpleKeyboard />
     </div>
   );
 };
