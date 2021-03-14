@@ -54,16 +54,20 @@ function SimpleKeyboard() {
       "{space}"   // .com @ 
     ]
   };
-
+  console.log("layouts",layouts);
   const onChange = input => {
     setInput(input);
     console.log("Input changed", input);
   };
+   const log = (...x) => console.log(...x);
 
   const handleShift = () => {
+    const oldLayout = layout;
+    console.log("handling shift old", layout);
     //const newLayoutName = layout === "default" ? "shift" : "default";
-    if (/^[a-z]$/.test(layout)){setLayout(layout.toUpperCase())}
-    if (/^[A-Z]$/.test(layout)){setLayout(layout.toLowerCase())}
+    if (/^[a-z]$/.test(layout)){log("toupper");setLayout(layout.toUpperCase())}
+    if (/^[A-Z]$/.test(layout)){log("tolower");setLayout(layout.toLowerCase())}
+    console.log("handling shift new",layout);
     setLayout(layout === "default" ? "shift" : "default");
   };
   const caps = x => capsOn? x.toUpperCase():x.toLowerCase()
@@ -115,13 +119,14 @@ function SimpleKeyboard() {
         keyboardRef={r => (keyboard.current = r)}
         layoutName={getLetter()}
         layout={layouts}
+        
         onChange={onChange}
         onKeyPress={onKeyPress}
-        disableButtonHold={true}
+        
       />
     </div>
   );
-}
+}   // baseClass= "jellyBabyKeyboard"  disableButtonHold={true}
 
 export default SimpleKeyboard
 

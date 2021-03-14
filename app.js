@@ -3,7 +3,8 @@ import React, { useState, useEffect }  from "react"
 //import KeyboardedInput from 'react-touch-screen-keyboard';
 import Keyboard from "./keyboard" 
 import SimpleKeyboard from "./simpleKeyboard"
-const rita = require('rita')
+import RhymingKeyboard from "./rhymingKeyboard"
+const rita = require('rita');
 // https://rednoise.org/rita/reference/RiTa/rhymes/index.html
 // see https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
 // rita.rhymes("cats", { maxLength: 4, numSyllables: 1,pos:"nns" });
@@ -77,11 +78,12 @@ const App = () => {
         <option>Egg</option>
         <option>xxx</option>
       </select>       
-      <button onClick={buttonClicked}>switch</button>
-      <Keyboard />
+
+      
       <SimpleKeyboard />
+      
     </div>
   );
-};
+};    // <RhymingKeyboard /> <Keyboard />         <button onClick={buttonClicked}>switch</button>
 
 export default App;
