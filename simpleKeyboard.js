@@ -8,9 +8,9 @@ import "react-simple-keyboard/build/css/index.css";
 
 function SimpleKeyboard() {
   const [input, setInput] = useState("");
-  const [layout, setLayout] = useState("default");
   const [text, setText] = useState("jelly babies ");
-  const [index, setIndex] = useState(0);
+  const [layout, setLayout] = useState(text[0]);
+  const [index, setIndex] = useState(1);
   const [capsOn, setCapsOn] = useState(false);
   const keyboard = useRef();
   
@@ -54,7 +54,7 @@ function SimpleKeyboard() {
       "{space}"   // .com @ 
     ]
   };
-  console.log("layouts",layouts);
+  //console.log("layouts",layouts);
   const onChange = input => {
     setInput(input);
     console.log("Input changed", input);
@@ -62,13 +62,14 @@ function SimpleKeyboard() {
    const log = (...x) => console.log(...x);
 
   const handleShift = () => {
-    const oldLayout = layout;
-    console.log("handling shift old", layout);
-    //const newLayoutName = layout === "default" ? "shift" : "default";
-    if (/^[a-z]$/.test(layout)){log("toupper");setLayout(layout.toUpperCase())}
-    if (/^[A-Z]$/.test(layout)){log("tolower");setLayout(layout.toLowerCase())}
-    console.log("handling shift new",layout);
-    setLayout(layout === "default" ? "shift" : "default");
+    if (/^[a-z]$/.test(layout)){
+      //log("toupper");
+      setLayout(layout.toUpperCase())
+    } else if (/^[A-Z]$/.test(layout)){
+      //log("tolower");
+      setLayout(layout.toLowerCase())
+    }
+    //setLayout(layout === "default" ? "shift" : "default");
   };
   const caps = x => capsOn? x.toUpperCase():x.toLowerCase()
   const nextKeyboard = (inc = 1) => {
@@ -90,7 +91,7 @@ function SimpleKeyboard() {
       case ",":
       case ".":
       case "{space}":
-        if (getLetter() === " "){nextKeyboard(1)}
+        if (layout === " "){nextKeyboard(1)}
         break;
       default:
         nextKeyboard(1);
@@ -117,7 +118,7 @@ function SimpleKeyboard() {
       />
       <Keyboard
         keyboardRef={r => (keyboard.current = r)}
-        layoutName={getLetter()}
+        layoutName={layout}
         layout={layouts}
         
         onChange={onChange}
