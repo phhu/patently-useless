@@ -71,19 +71,22 @@ const App = () => {
        value={text}
       ></textarea>
       <br />
-      */}
       <select value={filter} onChange={ev => setFilter(ev.target.value)}>
         <option>Blank</option>
         <option>Vowels</option>
         <option>Egg</option>
         <option>xxx</option>
-      </select>       
+      </select>    
+      */}
+   
 
       
-      <SimpleKeyboard />
+      <SimpleKeyboard baseClass="jellyBabyKeyboard" initialText="jelly babies "/>
+      <SimpleKeyboard baseClass="blahKeyboard" initialText="blah " />
+      <RhymingKeyboard /> 
       
     </div>
   );
-};    // <RhymingKeyboard /> <Keyboard />         <button onClick={buttonClicked}>switch</button>
+};    // <Keyboard />         <button onClick={buttonClicked}>switch</button>
 
 export default App;

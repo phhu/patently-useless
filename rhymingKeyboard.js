@@ -39,14 +39,26 @@ function RhymingKeyboard() {
   };
 
   const onChange = input => {
-    if (/[^ ] $/.test(input)){
+    if (/\w\W$/.test(input)){
       const lastWord = getLast(input.trim().split(" "))
-      console.log("* last word:", lastWord);
+      const lastSentence = getLast(input.trim().replace(/\./,"").split("."))
+      console.log("* last word:", lastWord, ":", lastSentence);
+      const an = rita.analyze(lastSentence);
+      console.log(an);
+      const pos = getLast(an.pos.split(" "));
+      if (/^nn/.test(pos)){
+        const rr = rita.rhymes(lastWord,{pos});
+        console.log(rr);
+        const rnd = Math.floor(Math.random() * rr.length);
+        const re = new RegExp("^(.*)"+lastWord+"(.*?)$");
+        input = input.replace(re,"$1"+rr[rnd]+"$2");
+        keyboard.current.setInput(input)
+      }
+
 
     }
-    const newInput = input
-    setInput(newInput );
-    console.log("Input changed", newInput );
+    setInput(input );
+    console.log("Input changed", input );
   };
 
   const handleShift = () => {
@@ -79,7 +91,7 @@ function RhymingKeyboard() {
       />
       <Keyboard
         keyboardRef={r => (keyboard.current = r )}
-        layoutName="default"
+        layoutName={layout}
         layout={layouts}
         baseClass= "rhymingKeyboard"
         onChange={onChange}

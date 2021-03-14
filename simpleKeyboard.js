@@ -6,9 +6,12 @@ import "react-simple-keyboard/build/css/index.css";
 //import "./styles.css";
 // https://hodgef.com/simple-keyboard/editor/?d=simple-keyboard/react-simple-keyboard-hooks-demo/tree/master
 
-function SimpleKeyboard() {
+function SimpleKeyboard({
+  initialText = "jelly babies ",
+  baseClass = "jellyBabyKeyboard"
+}) {
   const [input, setInput] = useState("");
-  const [text, setText] = useState("jelly babies ");
+  const [text, setText] = useState(initialText || "jelly babies ");
   const [layout, setLayout] = useState(text[0]);
   const [index, setIndex] = useState(1);
   const [capsOn, setCapsOn] = useState(false);
@@ -38,7 +41,7 @@ function SimpleKeyboard() {
   const layouts = {
     //default: singleLayout("j"), shift: singleLayout("J"),
     //j: singleLayout("j"), J: singleLayout("J"),
-    ...keyboards('jelly babies'),
+    ...keyboards(initialText),
     default: [
       "` 1 2 3 4 5 6 7 8 9 0 - = {bksp}",
       "{next} z w egg r t y u i o p [ ] \\",
@@ -120,14 +123,14 @@ function SimpleKeyboard() {
         keyboardRef={r => (keyboard.current = r)}
         layoutName={layout}
         layout={layouts}
-        
+        baseClass= {baseClass}
         onChange={onChange}
         onKeyPress={onKeyPress}
         
       />
     </div>
   );
-}   // baseClass= "jellyBabyKeyboard"  disableButtonHold={true}
+}   //  disableButtonHold={true}
 
 export default SimpleKeyboard
 
