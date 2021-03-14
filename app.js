@@ -9,6 +9,8 @@ const rita = require('rita');
 // see https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
 // rita.rhymes("cats", { maxLength: 4, numSyllables: 1,pos:"nns" });
 
+const jbText = `Jelly Babies are known, at least since advertisements by Riches Confectionery Company of 22 Duke Street, London Bridge in 1885, along with a variety of other baby sweets, including Tiny Totties and Slopers Babies. But the pricing of these, at one farthing each suggests that they were very much larger than the modern Jelly Baby.The sweets were invented in 1864 by an Austrian immigrant working at Fryers of Lancashire and were originally marketed as Unclaimed Babies.`;
+
 global.rita = rita
 const App = () => {
   
@@ -80,9 +82,10 @@ const App = () => {
       */}
    
 
+
       
       <SimpleKeyboard baseClass="jellyBabyKeyboard" initialText="jelly babies "/>
-      <SimpleKeyboard baseClass="blahKeyboard" initialText="blah " />
+      <SimpleKeyboard baseClass="blahKeyboard" initialText={jbText} />
       <RhymingKeyboard /> 
       
     </div>

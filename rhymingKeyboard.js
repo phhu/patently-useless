@@ -46,13 +46,15 @@ function RhymingKeyboard() {
       const an = rita.analyze(lastSentence);
       console.log(an);
       const pos = getLast(an.pos.split(" "));
-      if (/^nn/.test(pos)){
+      if (/^(nn|vb)/.test(pos)){
         const rr = rita.rhymes(lastWord,{pos});
         console.log(rr);
-        const rnd = Math.floor(Math.random() * rr.length);
-        const re = new RegExp("^(.*)"+lastWord+"(.*?)$");
-        input = input.replace(re,"$1"+rr[rnd]+"$2");
-        keyboard.current.setInput(input)
+        if (rr.length>0){
+          const rnd = Math.floor(Math.random() * rr.length);
+          const re = new RegExp("^(.*)"+lastWord+"(.*?)$");
+          input = input.replace(re,"$1"+rr[rnd]+"$2");
+          keyboard.current.setInput(input)
+        }
       }
 
 

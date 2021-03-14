@@ -92,7 +92,9 @@ function SimpleKeyboard({
         nextKeyboard(-1);
         break;
       case ",":
+        if (layout === ","){nextKeyboard(1)}
       case ".":
+        if (layout === "."){nextKeyboard(1)}
       case "{space}":
         if (layout === " "){nextKeyboard(1)}
         break;
